@@ -1,0 +1,249 @@
+<release>2</release>
+
+
+
+
+<!-- Wände und Tore aus Holz -->
+<category name="Wände/Tore Holz">
+
+    <item id="ItemWoodWallGarageDoor">
+
+        <NameEng>Garage Door</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="ItemWoodWallLg">1</recipe>
+        <recipe id="PartWoodLumber">2</recipe>	
+    </item>
+
+    
+    <item id="ItemWoodWallLg">
+
+        <NameEng>Large Wall</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="ItemWoodWall">1</recipe>
+        <recipe id="PartWoodPlywood">1</recipe>
+        <recipe id="PartWoodLumber">1</recipe>
+    </item>
+    
+
+    <item id="ItemWoodWall">
+
+        <NameEng>Small Wood Wall</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="ItemWoodWallThird">3</recipe>
+    </item>
+    
+
+    <item id="ItemWoodWallThird">
+        
+        <NameEng>Third Wall</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="PartWoodPlywood">3</recipe>
+        <recipe id="PartWoodLumber">3</recipe>
+    </item>
+
+</category>
+
+<!-- HILFSMITTEL -->
+<category name="Hilfsmittel">
+    <item id="WorkBench_DZ">
+
+        <NameEng>Wood Workbench</NameEng>
+        <NameGer>Werkbank</NameGer>
+        
+        <recipe id="PartWoodPlywood">1</recipe>
+        <recipe id="PartWoodLumber">2</recipe>
+    </item>
+
+</category>
+
+<!-- Zäune -->
+<category name="Zäune">
+
+    <item id="ItemCorrugated">
+        
+        <NameEng>Corrugated Fence</NameEng>
+        <NameGer>Wellblech Zaun</NameGer>    
+        
+        <recipe id="ItemPole">2</recipe>
+        <recipe id="ItemTankTrap">2</recipe>
+        <recipe id="PartWoodLumber">2</recipe>
+    </item>
+
+
+</category>
+
+<!-- Zelte und Tarnnetzte -->
+<category name="Zelte und Tarnnetze">
+
+
+    <item id="desert_net_kit">
+        <NameEng>Desert Netting</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="bulk_empty">1</recipe>
+        <recipe id="ItemTent">2</recipe>	
+        <recipe id="ItemPole">2</recipe>	        
+    </item> 
+    
+    <item id="forest_net_kit">
+        <NameEng>Forest Netting</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="ItemTent">2</recipe>        
+        <recipe id="ItemPole">2</recipe>	        
+    </item>     
+    
+    <item id="desert_large_net_kit">
+        <NameEng>Large Desert Netting</NameEng>
+        <NameGer>??</NameGer>       
+        
+        <recipe id="deser_net_kit">3</recipe>	        
+    </item> 
+    
+    <item id="forest_large_net_kit">
+        <NameEng>Large Forest Netting</NameEng>
+        <NameGer>??</NameGer>       
+        
+        <recipe id="forest_net_kit">3</recipe>	        
+    </item>     
+    
+    <item id="ItemTent">
+        <NameEng>Old Camping Tent</NameEng>
+        <NameGer>??</NameGer>               
+    </item>     
+
+
+
+
+</category>
+
+<!-- Anderes -->
+<category name="Anderes">
+
+    
+    
+    
+    
+</category>
+
+<!------------------------------->
+<category name="Lagerorte">
+
+    <item id="Wooden_shed_DZ">
+        <NameEng>Wooden Shed</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="bulk_empty">1</recipe>
+        <recipe id="ItemCorrugated">2</recipe>	
+        <recipe id="PartWoodPlywood">4</recipe>	
+        <recipe id="PartWoodLumber">4</recipe>	
+    </item>    
+
+    <item id="bulk_empty">        
+        <NameEng>Empty Supply Crate</NameEng>
+        <NameGer>leere Versorgungskiste</NameGer>    
+        
+        <recipe id="PartWoodLumber">2</recipe>
+        <recipe id="PartGeneric">1</recipe>        
+    </item>
+    
+    <item id="StorageShed_DZ">        
+        <NameEng>Storage Shed</NameEng>
+        <NameGer>??</NameGer>    
+        
+        <recipe id="bulk_empty">1</recipe>
+        <recipe id="ItemCorrugated">4</recipe>        
+        <recipe id="PartWoodPlywood">2</recipe>        
+        <recipe id="PartWoodLumber">2</recipe>                
+    </item>    
+
+</category>
+
+
+<!-- Metal Baumaterial -->
+<category name="Baumaterial aus Metal">
+
+    <item id="ItemPole">
+        
+        <NameEng>Metal Pole</NameEng>
+        <NameGer>??</NameGer>
+        
+        <recipe id="PartGeneric">2</recipe>
+    </item>
+    
+</category>
+
+  
+<!-- Holz Baumaterial -->
+<category name="Baumaterial aus Holz">
+
+    <item id="PartWoodLumberPack">
+        
+        <NameEng>Lumber Pack</NameEng>
+        <NameGer>Bauholz Paket</NameGer>
+        
+        <recipe id="PartWoodLumber">3</recipe>
+    </item>
+
+
+    <item id="PartWoodLumber">
+        
+        <NameEng>Lumber</NameEng>
+        <NameGer>Bauholz</NameGer>
+        
+        <recipe id="PartWoodPile">2</recipe>
+    </item>
+
+    <item id="PartWoodPlywood">
+        
+        <NameEng>Plywood</NameEng>
+        <NameGer>Sperrholz</NameGer>
+        
+        <recipe id="PartWoodLumber">2</recipe>
+    </item>
+
+</category>
+
+  
+<!-- ELEMENTARE BAUSTEINE -->
+<category name="Elementare Teile">
+ 
+    <item id="PartWoodPile">
+
+        <NameEng>PartWoodPile</NameEng>
+        <NameGer>Holzstapel</NameGer>
+    </item>
+
+    <item id="PartGeneric">
+        
+        <NameEng>Scrap Metal</NameEng>
+        <NameGer>Metallteile</NameGer>    
+    </item>
+
+    <item id="ItemTankTrap">
+        
+        <NameEng>Tank Trap</NameEng>
+        <NameGer>Panzerfalle</NameGer>    
+    </item>
+
+</category>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
