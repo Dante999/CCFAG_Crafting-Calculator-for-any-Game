@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <QString>
 
 Database::Database()
 {
@@ -25,6 +26,7 @@ void Database::loadFromFile()
 
     std::wstring category;
     std::wstring itemID;
+    Item *currentItem;
 
     bool bCommentBlock = false;
 
@@ -48,23 +50,45 @@ void Database::loadFromFile()
 
             if( lineBuffer.find(TAGCATEGORY) != nExist)
             {
-                std::wcout << L"Kategorie: >" << getParameterFromTag(lineBuffer) << L"<" << std::endl;
-
                 category = getParameterFromTag(lineBuffer);
             }
 
             else if( lineBuffer.find(TAGITEM) != nExist)
             {
-                std::wcout << L"ItemID: >" << getParameterFromTag(lineBuffer) << L"<" << std::endl;
-
                 itemID = getParameterFromTag(lineBuffer);
 
                 Item *newItem = new Item(itemID);
 
+                currentItem = newItem;
                 itemMap[category][itemID] = newItem;
+
+            }
+
+            else if( lineBuffer.find(TAGNAMEENG) != nExist)
+            {
+                std::wstring nameEng = getValueFromTag(lineBuffer);
+
+                currentItem->setNameEng(nameEng);
+            }
+
+            else if( lineBuffer.find(TAGNAMEGER) != nExist)
+            {
+                std::wstring nameGer = getValueFromTag(lineBuffer);
+
+                currentItem->setNameGer(nameGer);
+            }
+
+            else if( lineBuffer.find(TAGRECIPE) != nExist)
+            {
+                std::wstring recipeItemID = getParameterFromTag(lineBuffer);
+                QString  recipeItemQuantity = QString::fromStdWString(getValueFromTag(lineBuffer));
+
+                currentItem->addRecipeItem(recipeItemQuantity.toInt(), recipeItemID);
             }
         }
     }
+
+    std::wcout << "Fertig" << std::endl;
 }
 
 
@@ -98,7 +122,28 @@ std::wstring Database::getParameterFromTag(std::wstring temp)
     }
 
     return L"";
+}
 
+std::wstring Database::getValueFromTag(std::wstring temp)
+{
+    size_t pos;
+    const size_t nExist = std::wstring::npos;
+
+    pos = temp.find('>');
+
+    if( pos != nExist)
+    {
+        temp.erase(0, pos+1);
+    }
+
+    pos = temp.find('<');
+
+    if( pos != nExist)
+    {
+        temp.erase(pos);
+    }
+
+    return temp;
 }
 
 void Database::saveToFile()

@@ -23,6 +23,7 @@ public:
 private:
     std::wstring filename;
     std::wstring getParameterFromTag(std::wstring temp);
+    std::wstring getValueFromTag(std::wstring temp);
 
     void loadFromFile();
     void saveToFile();
