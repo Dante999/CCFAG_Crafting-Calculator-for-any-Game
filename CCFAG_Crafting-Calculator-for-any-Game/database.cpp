@@ -23,6 +23,9 @@ void Database::loadFromFile()
     const size_t nExist = std::wstring::npos;
     int lineCounter = 0;
 
+    std::wstring category;
+    std::wstring itemID;
+
     bool bCommentBlock = false;
 
     databaseFile.open("items.xml");
@@ -47,20 +50,18 @@ void Database::loadFromFile()
             {
                 std::wcout << L"Kategorie: >" << getParameterFromTag(lineBuffer) << L"<" << std::endl;
 
-              /** TODO
-
-                std::wstring categoryName = getParameterFromTag(lineBuffer);
-
-                itemMap *newItemMap = new itemMap;
-
-                categoryMap[categoryName] = newItemMap;
-            **/
-
+                category = getParameterFromTag(lineBuffer);
             }
 
             else if( lineBuffer.find(TAGITEM) != nExist)
             {
                 std::wcout << L"ItemID: >" << getParameterFromTag(lineBuffer) << L"<" << std::endl;
+
+                itemID = getParameterFromTag(lineBuffer);
+
+                Item *newItem = new Item(itemID);
+
+                itemMap[category][itemID] = newItem;
             }
         }
     }

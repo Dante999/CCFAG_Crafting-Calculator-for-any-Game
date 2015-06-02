@@ -1,6 +1,8 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include "item.h"
+
 #include <string>
 #include <map>
 
@@ -25,7 +27,8 @@ private:
     void loadFromFile();
     void saveToFile();
 
-    //std::map <std::wstring, std::map> categoryMap;
+    std::map <std::wstring, std::map <std::wstring, Item*> > itemMap;
+
 };
 
 #endif // DATABASE_H
