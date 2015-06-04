@@ -23,17 +23,21 @@ public:
 
     void print(void);
 
-private:
-    std::wstring itemID;
-    std::wstring nameEng;
-    std::wstring nameGer;
-
     struct recipe{
                     std::wstring itemID;
                     int quantity;
                   };
 
     std::vector <recipe*> recipeVector;
+
+private:
+    std::wstring itemID;
+    std::wstring nameEng;
+    std::wstring nameGer;
+
+
+
+
 
 
 
