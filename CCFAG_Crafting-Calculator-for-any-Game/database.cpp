@@ -8,15 +8,33 @@
 
 Database::Database()
 {
-    this->filename = L"items.xml";
+    this->filename = "items.xml";
+    loadFromFile();    
+}
+
+Database::Database(std::wstring filename)
+{
+    QString qFilename;
+    qFilename.fromStdWString(filename);
+
+    this->filename = qFilename.toStdString();
 
     loadFromFile();
-    saveToFile();
 }
 
 Database::~Database()
-{
+{    
 
+    for(it1 = categoryMap.begin(); it1 != categoryMap.end(); it1++)
+    {
+        for(it2 = it1->second->begin(); it2 != it1->second->end(); it2++)
+        {
+            Item *itemPointer;
+
+            itemPointer = it2->second;
+            itemPointer->~Item();
+        }
+    }
 }
 
 void Database::loadFromFile()
@@ -29,9 +47,9 @@ void Database::loadFromFile()
     std::wstring category;
     std::wstring itemID;    
 
-    bool bCommentBlock = false;
+    bool bCommentBlock = false;    
 
-    databaseFile.open("items.xml");
+    databaseFile.open(this->filename.c_str());
 
     while(getline(databaseFile, lineBuffer, L'\n') )
     {
@@ -94,6 +112,58 @@ void Database::loadFromFile()
     }    
 }
 
+void Database::saveToFile()
+{
+    std::wofstream databaseFile;    
+
+    databaseFile.open(this->filename.c_str(), std::ios::trunc);
+
+    for(it1 = categoryMap.begin(); it1 != categoryMap.end(); it1++)
+    {
+        databaseFile << TAG_START_CATEGORY << L"\"" << it1->first << L"\"" << L">" << std::endl;
+        databaseFile << std::endl;
+
+        for(it2 = it1->second->begin(); it2 != it1->second->end(); it2++)
+        {
+            this->currentItem = it2->second;
+
+            databaseFile << TAB << TAG_START_ITEM;
+            databaseFile << L"\"" << this->currentItem->getID() << L"\"";
+            databaseFile << L">" << std::endl;
+
+            databaseFile << TAB << TAB;
+            databaseFile << TAG_START_NAMEENG;
+            databaseFile << this->currentItem->getNameEng();
+            databaseFile << TAG_END_NAMEENG << std::endl;
+
+            databaseFile << TAB << TAB;
+            databaseFile << TAG_START_NAMEGER;
+            databaseFile << this->currentItem->getNameGer();
+            databaseFile << TAG_END_NAMEGER << std::endl;
+
+            size_t i;
+
+            for(i=0; i<this->currentItem->recipeVector.size(); i++)
+            {
+                databaseFile << TAB << TAB;
+                databaseFile << TAG_START_RECIPE;
+                databaseFile << L"\"" << this->currentItem->recipeVector[i]->itemID << L"\"";
+                databaseFile << L">";
+                databaseFile << this->currentItem->recipeVector[i]->quantity;
+                databaseFile << TAG_END_RECIPE << std::endl;
+            }
+
+
+            databaseFile << TAB;
+            databaseFile << TAG_END_ITEM << std::endl << std::endl;
+        }
+
+        databaseFile << TAG_END_CATEGORY << std::endl;
+        databaseFile << std::endl;
+    }
+
+    databaseFile.close();
+}
 
 std::wstring Database::getParameterFromTag(std::wstring temp)
 {
@@ -148,63 +218,3 @@ std::wstring Database::getValueFromTag(std::wstring temp)
 
     return temp;
 }
-
-void Database::saveToFile()
-{
-    std::wofstream databaseFile;
-    typeCategoryMap::iterator it1;
-    typeItemMap::iterator it2;
-
-    databaseFile.open("items.xml", std::ios::trunc);
-
-    for(it1 = categoryMap.begin(); it1 != categoryMap.end(); it1++)
-    {
-        databaseFile << TAG_START_CATEGORY << L"\"" << it1->first << L"\"" << L">" << std::endl;
-        databaseFile << std::endl;
-
-        for(it2 = it1->second->begin(); it2 != it1->second->end(); it2++)
-        {
-            this->currentItem = it2->second;
-
-            databaseFile << TAB << TAG_START_ITEM;
-            databaseFile << L"\"" << this->currentItem->getID() << L"\"";
-            databaseFile << L">" << std::endl;
-
-            databaseFile << TAB << TAB;
-            databaseFile << TAG_START_NAMEENG;
-            databaseFile << this->currentItem->getNameEng();
-            databaseFile << TAG_END_NAMEENG << std::endl;
-
-            databaseFile << TAB << TAB;
-            databaseFile << TAG_START_NAMEGER;
-            databaseFile << this->currentItem->getNameGer();
-            databaseFile << TAG_END_NAMEGER << std::endl;
-
-            size_t i;
-
-            for(i=0; i<this->currentItem->recipeVector.size(); i++)
-            {
-                databaseFile << TAB << TAB;
-                databaseFile << TAG_START_RECIPE;
-                databaseFile << L"\"" << this->currentItem->recipeVector[i]->itemID << L"\"";
-                databaseFile << L">";
-                databaseFile << this->currentItem->recipeVector[i]->quantity;
-                databaseFile << TAG_END_RECIPE << std::endl;
-            }
-
-
-            databaseFile << TAB;
-            databaseFile << TAG_END_ITEM << std::endl << std::endl;
-        }
-
-        databaseFile << TAG_END_CATEGORY << std::endl;
-        databaseFile << std::endl;
-
-    }
-
-
-    databaseFile.close();
-
-
-}
-

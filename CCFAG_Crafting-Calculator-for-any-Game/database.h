@@ -27,25 +27,27 @@ class Database
 {
 public:
     Database();
+    Database(std::wstring filename);
     ~Database();
+
+    typedef std::map <std::wstring, Item*> typeItemMap;
+    typedef std::map <std::wstring, typeItemMap*> typeCategoryMap;
+
+    typeCategoryMap categoryMap;
+    typeItemMap *currentItemMap;
+
+    typeCategoryMap::iterator it1;
+    typeItemMap::iterator it2;
+
 private:
-    std::wstring filename;
+    std::string filename;
     std::wstring getParameterFromTag(std::wstring temp);
     std::wstring getValueFromTag(std::wstring temp);
 
     void loadFromFile();
     void saveToFile();
 
-    //std::map <std::wstring, std::map <std::wstring, Item*> > itemMap;
-
-    typedef std::map <std::wstring, Item*> typeItemMap;
-    typedef std::map <std::wstring, typeItemMap*> typeCategoryMap;
-
-
-    typeCategoryMap categoryMap;
-    typeItemMap *currentItemMap;
     Item *currentItem;
-
 };
 
 #endif // DATABASE_H
