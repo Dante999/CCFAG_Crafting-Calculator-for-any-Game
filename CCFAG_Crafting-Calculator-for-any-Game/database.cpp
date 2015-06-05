@@ -25,13 +25,13 @@ Database::Database(std::wstring filename)
 Database::~Database()
 {    
 
-    for(it1 = categoryMap.begin(); it1 != categoryMap.end(); it1++)
+    for(itCategory = categoryMap.begin(); itCategory != categoryMap.end(); itCategory++)
     {
-        for(it2 = it1->second->begin(); it2 != it1->second->end(); it2++)
+        for(itItem = itCategory->second->begin(); itItem != itCategory->second->end(); itItem++)
         {
             Item *itemPointer;
 
-            itemPointer = it2->second;
+            itemPointer = itItem->second;
             itemPointer->~Item();
         }
     }
@@ -118,14 +118,14 @@ void Database::saveToFile()
 
     databaseFile.open(this->filename.c_str(), std::ios::trunc);
 
-    for(it1 = categoryMap.begin(); it1 != categoryMap.end(); it1++)
+    for(itCategory = categoryMap.begin(); itCategory != categoryMap.end(); itCategory++)
     {
-        databaseFile << TAG_START_CATEGORY << L"\"" << it1->first << L"\"" << L">" << std::endl;
+        databaseFile << TAG_START_CATEGORY << L"\"" << itCategory->first << L"\"" << L">" << std::endl;
         databaseFile << std::endl;
 
-        for(it2 = it1->second->begin(); it2 != it1->second->end(); it2++)
+        for(itItem = itCategory->second->begin(); itItem != itCategory->second->end(); itItem++)
         {
-            this->currentItem = it2->second;
+            this->currentItem = itItem->second;
 
             databaseFile << TAB << TAG_START_ITEM;
             databaseFile << L"\"" << this->currentItem->getID() << L"\"";

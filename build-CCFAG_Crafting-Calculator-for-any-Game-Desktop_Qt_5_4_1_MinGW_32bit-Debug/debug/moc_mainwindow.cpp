@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[6];
-    char stringdata[124];
+    QByteArrayData data[7];
+    char stringdata[130];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,13 +33,15 @@ QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 41), // "on_comboBox_Kategorie_current..."
 QT_MOC_LITERAL(2, 53, 0), // ""
 QT_MOC_LITERAL(3, 54, 4), // "arg1"
-QT_MOC_LITERAL(4, 59, 36), // "on_comboBox_Item_currentIndex..."
-QT_MOC_LITERAL(5, 96, 27) // "on_pushButton_Start_clicked"
+QT_MOC_LITERAL(4, 59, 27), // "on_pushButton_Start_clicked"
+QT_MOC_LITERAL(5, 87, 36), // "on_comboBox_Item_currentIndex..."
+QT_MOC_LITERAL(6, 124, 5) // "index"
 
     },
     "MainWindow\0on_comboBox_Kategorie_currentIndexChanged\0"
-    "\0arg1\0on_comboBox_Item_currentIndexChanged\0"
-    "on_pushButton_Start_clicked"
+    "\0arg1\0on_pushButton_Start_clicked\0"
+    "on_comboBox_Item_currentIndexChanged\0"
+    "index"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,13 +60,13 @@ static const uint qt_meta_data_MainWindow[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    1,   29,    2, 0x08 /* Private */,
-       4,    1,   32,    2, 0x08 /* Private */,
-       5,    0,   35,    2, 0x08 /* Private */,
+       4,    0,   32,    2, 0x08 /* Private */,
+       5,    1,   33,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
 
        0        // eod
 };
@@ -75,8 +77,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         switch (_id) {
         case 0: _t->on_comboBox_Kategorie_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 1: _t->on_comboBox_Item_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 2: _t->on_pushButton_Start_clicked(); break;
+        case 1: _t->on_pushButton_Start_clicked(); break;
+        case 2: _t->on_comboBox_Item_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }

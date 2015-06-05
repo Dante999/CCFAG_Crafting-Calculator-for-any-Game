@@ -20,7 +20,8 @@
 
 #define TAB L"    "
 
-
+typedef std::map <std::wstring, Item*> typeItemMap;
+typedef std::map <std::wstring, typeItemMap*> typeCategoryMap;
 
 
 class Database
@@ -30,14 +31,13 @@ public:
     Database(std::wstring filename);
     ~Database();
 
-    typedef std::map <std::wstring, Item*> typeItemMap;
-    typedef std::map <std::wstring, typeItemMap*> typeCategoryMap;
+
 
     typeCategoryMap categoryMap;
     typeItemMap *currentItemMap;
 
-    typeCategoryMap::iterator it1;
-    typeItemMap::iterator it2;
+    typeCategoryMap::iterator itCategory;
+    typeItemMap::iterator itItem;
 
 private:
     std::string filename;
