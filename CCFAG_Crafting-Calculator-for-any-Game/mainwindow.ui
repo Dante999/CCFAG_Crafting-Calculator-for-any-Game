@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>20</y>
+      <x>60</x>
+      <y>10</y>
       <width>451</width>
       <height>51</height>
      </rect>
@@ -26,7 +26,7 @@
     <property name="font">
      <font>
       <family>Segoe Script</family>
-      <pointsize>17</pointsize>
+      <pointsize>18</pointsize>
       <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
@@ -36,97 +36,41 @@
      <string>Crafting Calculator for any Game</string>
     </property>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>160</y>
-      <width>751</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_5">
-     <item row="0" column="0">
-      <widget class="QSplitter" name="splitter">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="title">
-         <string>Kategorie</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QComboBox" name="comboBox_Kategorie"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="title">
-         <string>Item ID</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QComboBox" name="comboBox_Item"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_3">
-        <property name="title">
-         <string>Name Deutsch</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <widget class="QLineEdit" name="lineEdit_NameGer"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_4">
-        <property name="title">
-         <string>Name Englisch</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <widget class="QLineEdit" name="lineEdit_NameEng"/>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="label_thumbnail">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>280</y>
-      <width>60</width>
-      <height>60</height>
+      <x>20</x>
+      <y>170</y>
+      <width>150</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>60</width>
-      <height>60</height>
+      <width>100</width>
+      <height>100</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>60</width>
-      <height>60</height>
+      <width>500</width>
+      <height>500</height>
      </size>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>image_label</string>
     </property>
    </widget>
    <widget class="QTreeWidget" name="treeWidget_Crafting">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>250</y>
+      <x>200</x>
+      <y>170</y>
       <width>421</width>
-      <height>241</height>
+      <height>331</height>
      </rect>
     </property>
     <column>
@@ -135,24 +79,55 @@
      </property>
     </column>
    </widget>
-   <widget class="QSpinBox" name="spinBox_Quantity">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>310</y>
-      <width>42</width>
-      <height>22</height>
+      <x>650</x>
+      <y>10</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="minimum">
-     <number>1</number>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
     </property>
+    <property name="text">
+     <string>by Dante999</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>210</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Anzahl</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="spinBox_Quantity">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QPushButton" name="pushButton_Start">
     <property name="geometry">
      <rect>
       <x>670</x>
-      <y>310</y>
+      <y>350</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -161,6 +136,69 @@
      <string>Start</string>
     </property>
    </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>761</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Kategorie</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QComboBox" name="comboBox_Kategorie"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Item Englisch</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QComboBox" name="comboBox_Item"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Item Deutsch</string>
+     </property>
+     <widget class="QLineEdit" name="lineEdit_NameGer">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>23</y>
+        <width>133</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>label_thumbnail</zorder>
+   <zorder>treeWidget_Crafting</zorder>
+   <zorder>label_2</zorder>
+   <zorder>splitter</zorder>
+   <zorder>splitter</zorder>
+   <zorder>formLayoutWidget</zorder>
+   <zorder>pushButton_Start</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>groupBox_2</zorder>
+   <zorder>groupBox_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

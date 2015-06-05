@@ -51,8 +51,7 @@ void MainWindow::on_comboBox_Kategorie_currentIndexChanged(const QString &arg1)
     this->itCBoxItem = this->itCBoxCategory->second->begin();
     this->pCBoxItem = this->itCBoxItem->second;
 
-    ui->lineEdit_NameGer->setText(QString::fromStdWString(this->pCBoxItem->getNameGer()));
-    ui->lineEdit_NameEng->setText(QString::fromStdWString(this->pCBoxItem->getNameEng()));
+    ui->lineEdit_NameGer->setText(QString::fromStdWString(this->pCBoxItem->getNameGer()));    
 }
 
 void MainWindow::on_pushButton_Start_clicked()
@@ -60,61 +59,34 @@ void MainWindow::on_pushButton_Start_clicked()
     ui->treeWidget_Crafting->clear();
     QTreeWidgetItem *TreeItem = new QTreeWidgetItem(ui->treeWidget_Crafting);
     TreeItem->setText(0, "Craftingtabelle");
-    Item *currentItem;
 
-    QString qSelectedCategory = ui->comboBox_Kategorie->currentText();
-    QString qSelectedItem = ui->comboBox_Item->currentText();
-
-    db->itCategory = db->categoryMap.find(qSelectedCategory.toStdWString());
-
-    for(db->itItem = db->itCategory->second->begin();db->itItem != db->itCategory->second->end(); db->itItem++ )
-    {
-        currentItem = db->itItem->second;
-
-        ui->comboBox_Item->addItem(QString::fromStdWString(currentItem->getID()));
-        ui->lineEdit_NameGer->setText(QString::fromStdWString(currentItem->getNameGer()));
-        ui->lineEdit_NameEng->setText(QString::fromStdWString(currentItem->getNameEng()));
-    }
-
-    fillTreeWidget( ui->spinBox_Quantity->value(), db->itItem->second, TreeItem);
+    fillTreeWidget( ui->spinBox_Quantity->value(), this->pCBoxItem, TreeItem);
 }
 
 void MainWindow::fillTreeWidget(int quantity, Item *itemObject, QTreeWidgetItem *previousTreeItem)
 {
-    size_t i;
-    int j;
+    size_t i;    
     int newQuantity;
-    QString qBuffer;
+    QString qBuffer;    
+
+    typeItemMap::iterator itItem;
 
     QTreeWidgetItem *newTreeItem = new QTreeWidgetItem(previousTreeItem);
 
     qBuffer = QString::number(quantity) + "x";
     qBuffer += QString::fromStdWString(itemObject->getNameEng());
-#if 0
+
     newTreeItem->setText(0, qBuffer);
 
     for(i=0; i<itemObject->recipeVector.size(); i++)
     {
-        /**
         newQuantity = itemObject->recipeVector[i]->quantity;
         newQuantity = newQuantity * quantity;
 
+        itItem = db->findItemIterator(itemObject->recipeVector[i]->itemID);
 
-        // TODO
-
-
-        for(db->it1 = db->categoryMap->begin(); db->it1 != db->categoryMap->end(); db->it1++)
-        {
-            for(db->it2 = db->it1->second->begin(); db->it2 != db->it1->second->end(); db->it2++)
-            {
-
-            }
-        }
-
-        fillTreeWidget(newQuantity, dbFile->itemVektor[j], item);
-    **/
+        fillTreeWidget(newQuantity, itItem->second, newTreeItem);
     }
-#endif
 }
 
 void MainWindow::on_comboBox_Item_currentIndexChanged(int index)
@@ -130,7 +102,6 @@ void MainWindow::on_comboBox_Item_currentIndexChanged(int index)
 
     this->pCBoxItem = this->itCBoxItem->second;
 
-    ui->lineEdit_NameEng->setText(QString::fromStdWString(this->pCBoxItem->getNameEng()));
     ui->lineEdit_NameGer->setText(QString::fromStdWString(this->pCBoxItem->getNameGer()));
 
     QPixmap pix("img/" + QString::fromStdWString(this->pCBoxItem->getID()));

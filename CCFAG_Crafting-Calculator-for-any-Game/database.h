@@ -31,10 +31,10 @@ public:
     Database(std::wstring filename);
     ~Database();
 
-
-
     typeCategoryMap categoryMap;
     typeItemMap *currentItemMap;
+
+    typeItemMap::iterator findItemIterator(std::wstring itemID);
 
     typeCategoryMap::iterator itCategory;
     typeItemMap::iterator itItem;

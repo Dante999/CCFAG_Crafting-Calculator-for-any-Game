@@ -36,7 +36,6 @@ private:
     typeCategoryMap::iterator itCBoxCategory;
     typeItemMap::iterator itCBoxItem;
     Item *pCBoxItem;
-
 };
 
 #endif // MAINWINDOW_H

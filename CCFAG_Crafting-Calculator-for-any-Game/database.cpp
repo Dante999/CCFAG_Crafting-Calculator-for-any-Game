@@ -37,6 +37,25 @@ Database::~Database()
     }
 }
 
+typeItemMap::iterator Database::findItemIterator(std::wstring itemID)
+{
+    typeCategoryMap::iterator itCategory;
+    typeItemMap::iterator itItem;
+
+    for(itCategory = this->categoryMap.begin(); itCategory != this->categoryMap.end(); itCategory++)
+    {
+        for(itItem = itCategory->second->begin(); itItem != itCategory->second->end(); itItem++)
+        {
+            if(itItem->second->getID() == itemID)
+            {
+                return itItem;
+            }
+        }
+    }
+
+    return itCategory->second->end();
+}
+
 void Database::loadFromFile()
 {
     std::wifstream databaseFile;

@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
@@ -36,8 +37,14 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QLabel *label;
-    QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout_5;
+    QLabel *label_thumbnail;
+    QTreeWidget *treeWidget_Crafting;
+    QLabel *label_2;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QLabel *label_3;
+    QSpinBox *spinBox_Quantity;
+    QPushButton *pushButton_Start;
     QSplitter *splitter;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_2;
@@ -46,15 +53,7 @@ public:
     QGridLayout *gridLayout;
     QComboBox *comboBox_Item;
     QGroupBox *groupBox_3;
-    QGridLayout *gridLayout_3;
     QLineEdit *lineEdit_NameGer;
-    QGroupBox *groupBox_4;
-    QGridLayout *gridLayout_4;
-    QLineEdit *lineEdit_NameEng;
-    QLabel *label_thumbnail;
-    QTreeWidget *treeWidget_Crafting;
-    QSpinBox *spinBox_Quantity;
-    QPushButton *pushButton_Start;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -68,24 +67,54 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(80, 20, 451, 51));
+        label->setGeometry(QRect(60, 10, 451, 51));
         QFont font;
         font.setFamily(QStringLiteral("Segoe Script"));
-        font.setPointSize(17);
+        font.setPointSize(18);
         font.setBold(true);
         font.setItalic(true);
         font.setWeight(75);
         label->setFont(font);
-        gridLayoutWidget = new QWidget(centralWidget);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 160, 751, 61));
-        gridLayout_5 = new QGridLayout(gridLayoutWidget);
-        gridLayout_5->setSpacing(6);
-        gridLayout_5->setContentsMargins(11, 11, 11, 11);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        splitter = new QSplitter(gridLayoutWidget);
+        label_thumbnail = new QLabel(centralWidget);
+        label_thumbnail->setObjectName(QStringLiteral("label_thumbnail"));
+        label_thumbnail->setGeometry(QRect(20, 170, 150, 150));
+        label_thumbnail->setMinimumSize(QSize(100, 100));
+        label_thumbnail->setMaximumSize(QSize(500, 500));
+        label_thumbnail->setFrameShape(QFrame::StyledPanel);
+        treeWidget_Crafting = new QTreeWidget(centralWidget);
+        treeWidget_Crafting->setObjectName(QStringLiteral("treeWidget_Crafting"));
+        treeWidget_Crafting->setGeometry(QRect(200, 170, 421, 331));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(650, 10, 121, 31));
+        QFont font1;
+        font1.setPointSize(15);
+        label_2->setFont(font1);
+        formLayoutWidget = new QWidget(centralWidget);
+        formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(670, 210, 81, 31));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setSpacing(6);
+        formLayout->setContentsMargins(11, 11, 11, 11);
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(formLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_3);
+
+        spinBox_Quantity = new QSpinBox(formLayoutWidget);
+        spinBox_Quantity->setObjectName(QStringLiteral("spinBox_Quantity"));
+        spinBox_Quantity->setMinimum(1);
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, spinBox_Quantity);
+
+        pushButton_Start = new QPushButton(centralWidget);
+        pushButton_Start->setObjectName(QStringLiteral("pushButton_Start"));
+        pushButton_Start->setGeometry(QRect(670, 350, 75, 23));
+        splitter = new QSplitter(centralWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setGeometry(QRect(10, 80, 761, 53));
         splitter->setOrientation(Qt::Horizontal);
         groupBox = new QGroupBox(splitter);
         groupBox->setObjectName(QStringLiteral("groupBox"));
@@ -113,47 +142,22 @@ public:
         splitter->addWidget(groupBox_2);
         groupBox_3 = new QGroupBox(splitter);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        gridLayout_3 = new QGridLayout(groupBox_3);
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setContentsMargins(11, 11, 11, 11);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         lineEdit_NameGer = new QLineEdit(groupBox_3);
         lineEdit_NameGer->setObjectName(QStringLiteral("lineEdit_NameGer"));
-
-        gridLayout_3->addWidget(lineEdit_NameGer, 0, 0, 1, 1);
-
+        lineEdit_NameGer->setGeometry(QRect(10, 23, 133, 20));
+        lineEdit_NameGer->setReadOnly(true);
         splitter->addWidget(groupBox_3);
-        groupBox_4 = new QGroupBox(splitter);
-        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        gridLayout_4 = new QGridLayout(groupBox_4);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        lineEdit_NameEng = new QLineEdit(groupBox_4);
-        lineEdit_NameEng->setObjectName(QStringLiteral("lineEdit_NameEng"));
-
-        gridLayout_4->addWidget(lineEdit_NameEng, 0, 0, 1, 1);
-
-        splitter->addWidget(groupBox_4);
-
-        gridLayout_5->addWidget(splitter, 0, 0, 1, 1);
-
-        label_thumbnail = new QLabel(centralWidget);
-        label_thumbnail->setObjectName(QStringLiteral("label_thumbnail"));
-        label_thumbnail->setGeometry(QRect(50, 280, 60, 60));
-        label_thumbnail->setMinimumSize(QSize(60, 60));
-        label_thumbnail->setMaximumSize(QSize(60, 60));
-        treeWidget_Crafting = new QTreeWidget(centralWidget);
-        treeWidget_Crafting->setObjectName(QStringLiteral("treeWidget_Crafting"));
-        treeWidget_Crafting->setGeometry(QRect(160, 250, 421, 241));
-        spinBox_Quantity = new QSpinBox(centralWidget);
-        spinBox_Quantity->setObjectName(QStringLiteral("spinBox_Quantity"));
-        spinBox_Quantity->setGeometry(QRect(610, 310, 42, 22));
-        spinBox_Quantity->setMinimum(1);
-        pushButton_Start = new QPushButton(centralWidget);
-        pushButton_Start->setObjectName(QStringLiteral("pushButton_Start"));
-        pushButton_Start->setGeometry(QRect(670, 310, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
+        label->raise();
+        label_thumbnail->raise();
+        treeWidget_Crafting->raise();
+        label_2->raise();
+        splitter->raise();
+        splitter->raise();
+        formLayoutWidget->raise();
+        pushButton_Start->raise();
+        groupBox_2->raise();
+        groupBox_3->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 787, 21));
@@ -174,14 +178,15 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         label->setText(QApplication::translate("MainWindow", "Crafting Calculator for any Game", 0));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Kategorie", 0));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Item ID", 0));
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "Name Deutsch", 0));
-        groupBox_4->setTitle(QApplication::translate("MainWindow", "Name Englisch", 0));
-        label_thumbnail->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        label_thumbnail->setText(QApplication::translate("MainWindow", "image_label", 0));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget_Crafting->headerItem();
         ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Crafting Baum", 0));
+        label_2->setText(QApplication::translate("MainWindow", "by Dante999", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Anzahl", 0));
         pushButton_Start->setText(QApplication::translate("MainWindow", "Start", 0));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Kategorie", 0));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Item Englisch", 0));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "Item Deutsch", 0));
     } // retranslateUi
 
 };
